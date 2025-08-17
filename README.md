@@ -1,5 +1,7 @@
 # termcopy
 
+[![CI](https://github.com/scaryPonens/termco-py/actions/workflows/test.yml/badge.svg)](https://github.com/scaryPonens/termco-py/actions/workflows/test.yml)
+
 A Python CLI tool for terminal clipboard operations, replicating the functionality of a bash script that sends OSC 52 escape sequences.
 
 ## Installation
