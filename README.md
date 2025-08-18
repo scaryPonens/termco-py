@@ -88,12 +88,34 @@ This project uses GitHub Actions for continuous integration and deployment:
   - Allows custom version releases
   - Optional publishing to PyPI/TestPyPI
 
+- **Auto release workflow** (`.github/workflows/auto-release.yml`): Automated version incrementing
+  - Automatically calculates next version (patch/minor/major)
+  - Creates GitHub releases with tags
+  - Updates version files and commits changes
+  - Optional publishing to PyPI/TestPyPI
+
 ### Setting up PyPI publishing
 
 1. Create API tokens on [PyPI](https://pypi.org/manage/account/token/) and [TestPyPI](https://test.pypi.org/manage/account/token/)
 2. Add the tokens as GitHub secrets:
    - `PYPI_API_TOKEN`: Your PyPI API token
    - `TEST_PYPI_API_TOKEN`: Your TestPyPI API token
+
+### Automated Releases
+
+The auto-release workflow provides three release types:
+
+- **Patch** (0.1.0 → 0.1.1): Bug fixes and minor improvements
+- **Minor** (0.1.0 → 0.2.0): New features, backward compatible
+- **Major** (0.1.0 → 1.0.0): Breaking changes
+
+The workflow will:
+1. Run all tests to ensure quality
+2. Calculate the new version based on current version and release type
+3. Update version in `pyproject.toml` and `src/termcopy/__init__.py`
+4. Create a GitHub release with the new version tag
+5. Commit and push the version changes
+6. Optionally publish to PyPI/TestPyPI
 
 ## License
 

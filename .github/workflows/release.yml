@@ -65,6 +65,12 @@ jobs:
         sed -i 's/version = ".*"/version = "${{ github.event.inputs.version }}"/' pyproject.toml
         # Update version in __init__.py
         sed -i 's/__version__ = ".*"/__version__ = "${{ github.event.inputs.version }}"/' src/termcopy/__init__.py
+        # Commit and push version changes
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add pyproject.toml src/termcopy/__init__.py
+        git commit -m "Bump version to ${{ github.event.inputs.version }}"
+        git push
     
     - name: Build package
       run: python -m build
