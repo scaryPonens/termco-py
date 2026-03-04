@@ -7,6 +7,7 @@ Build-Depends:
  dh-python,
  pybuild-plugin-pyproject,
  python3-all,
+ python3-pytest,
  python3-setuptools,
  python3-wheel
 Standards-Version: 4.7.0
