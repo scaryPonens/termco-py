@@ -18,12 +18,18 @@ This repo includes Debian packaging metadata and a CI workflow that builds `.deb
 
 #### User install steps (Cloudsmith)
 
-If the Cloudsmith repo is public:
+Official Cloudsmith setup/install flow:
 
 ```bash
 curl -1sLf 'https://dl.cloudsmith.io/public/thetranscend/relay/setup.deb.sh' | sudo -E bash
-sudo apt update
-sudo apt install termcopy
+sudo apt-get update
+sudo apt-get install termcopy
+```
+
+Install a specific version (example):
+
+```bash
+sudo apt-get install termcopy=0.2.1-1
 ```
 
 If you manage apt sources manually:

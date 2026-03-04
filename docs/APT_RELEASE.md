@@ -39,16 +39,33 @@ The `deb-package.yml` workflow will:
 - upload artifacts to Actions
 - publish `.deb` to Cloudsmith on `v*` tags
 
-## Example user install (after you host a repo)
+## Example user install (Cloudsmith, public repo)
+
+Preferred (Cloudsmith generated setup script):
 
 ```bash
-curl -fsSL <YOUR_REPO_GPG_URL> | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
+curl -1sLf 'https://dl.cloudsmith.io/public/thetranscend/relay/setup.deb.sh' | sudo -E bash
+sudo apt-get update
+sudo apt-get install termcopy
+```
 
-echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] <YOUR_APT_REPO_URL> bookworm main" \
+Install a pinned version:
+
+```bash
+sudo apt-get install termcopy=0.2.1-1
+```
+
+Manual source/key fallback:
+
+```bash
+curl -fsSL https://dl.cloudsmith.io/public/thetranscend/relay/gpg.key \
+  | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
+
+echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] https://dl.cloudsmith.io/public/thetranscend/relay/deb/debian bookworm main" \
   | sudo tee /etc/apt/sources.list.d/termcopy.list
 
-sudo apt update
-sudo apt install termcopy
+sudo apt-get update
+sudo apt-get install termcopy
 ```
 
 ## Optional next automation
