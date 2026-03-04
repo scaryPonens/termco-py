@@ -26,16 +26,17 @@ you need a hosted APT repository (e.g., Cloudsmith, Packagecloud, or self-hosted
 
 #### User install steps (after repo is published)
 
-1. Install repository key:
+1. Install repository key (Cloudsmith example):
 
 ```bash
-curl -fsSL <YOUR_REPO_GPG_URL> | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
+curl -fsSL https://dl.cloudsmith.io/public/thetranscend/relay/gpg.key \
+  | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
 ```
 
-2. Add apt source list:
+2. Add apt source list (Debian bookworm):
 
 ```bash
-echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] <YOUR_APT_REPO_URL> <DISTRO_CODENAME> main" \
+echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] https://dl.cloudsmith.io/public/thetranscend/relay/deb/debian bookworm main" \
   | sudo tee /etc/apt/sources.list.d/termcopy.list
 ```
 

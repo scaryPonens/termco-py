@@ -14,18 +14,30 @@ This project now includes Debian packaging under `debian/` and a GitHub Actions 
 
 To allow users to run `apt install termcopy`, you need a public apt repository.
 
-Choose one:
+This project is configured for Cloudsmith:
 
-1. **Cloudsmith** (recommended easiest)
-2. **Packagecloud**
-3. **Self-hosted Aptly/reprepro**
+- owner/repo: `thetranscend/relay`
+- distro/release path: `debian/bookworm`
+- secret required in GitHub: `CLOUDSMITH_API_KEY`
 
 ### Minimum required setup
 
-1. Create apt repo (distribution + component), e.g. `bookworm/main`.
-2. Configure signing key (GPG key) for that repo.
-3. Publish built `.deb` files to that repo.
+1. In Cloudsmith, ensure the repo supports Debian (`bookworm`).
+2. Add `CLOUDSMITH_API_KEY` in GitHub repo secrets.
+3. Create and push a version tag (`vX.Y.Z`) so the workflow publishes `.deb` to Cloudsmith.
 4. Document install instructions for users (keyring + source list).
+
+### Release trigger
+
+```bash
+git tag v0.2.1
+git push origin v0.2.1
+```
+
+The `deb-package.yml` workflow will:
+- build `.deb`
+- upload artifacts to Actions
+- publish `.deb` to Cloudsmith on `v*` tags
 
 ## Example user install (after you host a repo)
 
