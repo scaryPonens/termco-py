@@ -1,7 +1,7 @@
 Source: termcopy
 Section: utils
 Priority: optional
-Maintainer: Reuben Peter-Paul <reuben.peterpaul@gmail.com>
+Maintainer: Reuben Peter-Paul <reuben@reubenpeterpaul.com>
 Build-Depends:
  debhelper-compat (= 13),
  dh-python,

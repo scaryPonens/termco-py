@@ -7,7 +7,7 @@ setup(
     name="termcopy",
     version="0.1.0",
     author="scaryPonens",
-    author_email="reuben.peterpaul@gmail.com",
+    author_email="reuben@reubenpeterpaul.com",
     description="A CLI tool for terminal clipboard operations",
     long_description=long_description,
     long_description_content_type="text/markdown",

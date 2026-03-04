@@ -1,6 +1,6 @@
 Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
 Upstream-Name: termcopy
-Upstream-Contact: Reuben Peter-Paul <reuben.peterpaul@gmail.com>
+Upstream-Contact: Reuben Peter-Paul <reuben@reubenpeterpaul.com>
 Source: https://github.com/scaryPonens/termco-py
 
 Files: *
