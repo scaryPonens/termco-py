@@ -6,8 +6,29 @@ A Python CLI tool for terminal clipboard operations, replicating the functionali
 
 ## Installation
 
+### PyPI
+
 ```bash
 pip install termcopy
+```
+
+### Debian/Ubuntu via apt (planned)
+
+This repo now includes Debian packaging metadata and a CI workflow that builds `.deb` artifacts.
+
+To support:
+
+```bash
+apt install termcopy
+```
+
+you need a hosted APT repository (e.g., Cloudsmith, Packagecloud, Aptly/reprepro on your own server).
+
+Once published, users would install with your repo configured, then:
+
+```bash
+sudo apt update
+sudo apt install termcopy
 ```
 
 ## Usage
