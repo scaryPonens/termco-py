@@ -14,40 +14,48 @@ pip install termcopy
 
 ### Debian/Ubuntu via apt
 
-This repo includes Debian packaging metadata and a CI workflow that builds `.deb` artifacts.
+This repo includes Debian packaging metadata and a CI workflow that builds `.deb` artifacts and publishes to Cloudsmith on `v*` tags.
 
-To support:
+#### User install steps (Cloudsmith)
+
+If the Cloudsmith repo is public:
 
 ```bash
-apt install termcopy
+curl -1sLf 'https://dl.cloudsmith.io/public/thetranscend/relay/setup.deb.sh' | sudo -E bash
+sudo apt update
+sudo apt install termcopy
 ```
 
-you need a hosted APT repository (e.g., Cloudsmith, Packagecloud, or self-hosted Aptly/reprepro).
-
-#### User install steps (after repo is published)
-
-1. Install repository key (Cloudsmith example):
+If you manage apt sources manually:
 
 ```bash
 curl -fsSL https://dl.cloudsmith.io/public/thetranscend/relay/gpg.key \
   | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
-```
 
-2. Add apt source list (Debian bookworm):
-
-```bash
 echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] https://dl.cloudsmith.io/public/thetranscend/relay/deb/debian bookworm main" \
   | sudo tee /etc/apt/sources.list.d/termcopy.list
-```
 
-3. Update and install:
-
-```bash
 sudo apt update
 sudo apt install termcopy
 ```
 
 > See `docs/APT_RELEASE.md` for maintainer-side publishing steps.
+
+### Maintainer validation checklist
+
+After publishing a new tag (`vX.Y.Z`):
+
+1. Confirm Debian workflow succeeded and uploaded `.deb` artifact.
+2. Verify package is visible in Cloudsmith for `thetranscend/relay`.
+3. Test install in a clean Debian container/VM:
+   - add repo
+   - `apt update`
+   - `apt install termcopy`
+4. Smoke-test command:
+
+```bash
+echo "hello" | termcopy
+```
 
 ## Usage
 
