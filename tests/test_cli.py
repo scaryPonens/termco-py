@@ -6,7 +6,7 @@ import pytest
 import base64
 from io import BytesIO, StringIO
 from unittest.mock import patch, mock_open
-from src.termcopy.cli import is_terminal_input, read_input, encode_and_format, main
+from termcopy.cli import is_terminal_input, read_input, encode_and_format, main
 
 
 def test_is_terminal_input():
