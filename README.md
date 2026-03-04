@@ -6,9 +6,48 @@ A Python CLI tool for terminal clipboard operations, replicating the functionali
 
 ## Installation
 
+### PyPI
+
 ```bash
 pip install termcopy
 ```
+
+### Debian/Ubuntu via apt
+
+This repo includes Debian packaging metadata and a CI workflow that builds `.deb` artifacts.
+
+To support:
+
+```bash
+apt install termcopy
+```
+
+you need a hosted APT repository (e.g., Cloudsmith, Packagecloud, or self-hosted Aptly/reprepro).
+
+#### User install steps (after repo is published)
+
+1. Install repository key (Cloudsmith example):
+
+```bash
+curl -fsSL https://dl.cloudsmith.io/public/thetranscend/relay/gpg.key \
+  | sudo gpg --dearmor -o /usr/share/keyrings/termcopy-archive-keyring.gpg
+```
+
+2. Add apt source list (Debian bookworm):
+
+```bash
+echo "deb [signed-by=/usr/share/keyrings/termcopy-archive-keyring.gpg] https://dl.cloudsmith.io/public/thetranscend/relay/deb/debian bookworm main" \
+  | sudo tee /etc/apt/sources.list.d/termcopy.list
+```
+
+3. Update and install:
+
+```bash
+sudo apt update
+sudo apt install termcopy
+```
+
+> See `docs/APT_RELEASE.md` for maintainer-side publishing steps.
 
 ## Usage
 

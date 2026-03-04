@@ -1,0 +1,25 @@
+Source: termcopy
+Section: utils
+Priority: optional
+Maintainer: Reuben Peter-Paul <reuben@reubenpeterpaul.com>
+Build-Depends:
+ debhelper-compat (= 13),
+ dh-python,
+ pybuild-plugin-pyproject,
+ python3-all,
+ python3-pytest,
+ python3-setuptools,
+ python3-wheel
+Standards-Version: 4.7.0
+Rules-Requires-Root: no
+Homepage: https://github.com/scaryPonens/termco-py
+Vcs-Git: https://github.com/scaryPonens/termco-py.git
+Vcs-Browser: https://github.com/scaryPonens/termco-py
+
+Package: termcopy
+Architecture: all
+Depends: ${misc:Depends}, ${python3:Depends}
+Description: CLI tool for terminal clipboard operations (OSC52)
+ termcopy reads from stdin or a file, base64-encodes input,
+ and prints an OSC 52 escape sequence suitable for copying
+ text through terminal sessions.

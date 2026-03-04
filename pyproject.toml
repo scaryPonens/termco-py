@@ -12,7 +12,7 @@ description = "A CLI tool for terminal clipboard operations"
 readme = "README.md"
 license = {text = "MIT"}
 authors = [
-    {name = "Reuben Peter-Paul", email = "reuben.peterpaul@gmail.com"},
+    {name = "Reuben Peter-Paul", email = "reuben@reubenpeterpaul.com"},
 ]
 classifiers = [
     "Development Status :: 4 - Beta",
